@@ -5,6 +5,7 @@ describe('Testing Github Gists API', () => {
 
     const gistId1 = '799fe15f4b75706242b10d978e935067';
 
+    // do this before each test
     beforeEach(() => {
 
     })
@@ -17,6 +18,9 @@ describe('Testing Github Gists API', () => {
             expect(response.status).toBe(200)
     })
 
+    /**
+     * Check if the response is a JSON
+     */
     it('The response is a JSON', async () => {
 
         const gist = await getGistById(gistId1)

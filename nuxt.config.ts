@@ -1,29 +1,40 @@
-import { defineNuxtConfig } from 'nuxt3'
+const config = require('./developer.json')
+const siteTitle = `${config.name} | ${config.role}`
 
+
+/*
+ * Nuxt 3 Config File
+ Usage: https://nuxt.com/docs/api/configuration/nuxt-config
+ */
 export default defineNuxtConfig({
   compatibilityDate: '2025-02-28',
   devtools: { enabled: true },
-
+  /**
+   * * App Config
+   * app config: https://nuxt.com/docs/api/configuration/nuxt-config#app
+   * head config: https://nuxt.com/docs/api/configuration/nuxt-config#head
+   * meta config: https://nuxt.com/docs/getting-started/seo-meta
+   * pageTransition config: https://nuxt.com/docs/getting-started/transitions#transitions
+   * TODO: Add more meta tags for SEO
+   * TODO: Add tags for social media sharing
+   * TODO: Migrate apple-touch-icon config to manifest.json
+   */
   app: {
     head: {
       htmlAttrs: {
-        lang: 'en',
+        lang: 'en', // App language
       },
-      title: `${process.env.SITE_NAME} | ${process.env.SITE_ROLE}`, // Dynamic config from .env
+      title: siteTitle, // App window nav title
       meta: [
-        { name: 'description', content: "Muhammadxoja's portfolio showcasing projects, skills, and contact information. Built with Nuxt.js and Tailwind CSS." },
-        { name: 'keywords', content: 'Muhammadxoja, portfolio, web developer, frontend, backend, Nuxt.js, Tailwind CSS, projects, parallax, animations' },
-        { name: 'author', content: 'Muhammadxoja' },
-        { property: 'og:title', content: 'Muhammadxoja | Portfolio' },
-        { property: 'og:description', content: "Explore Muhammadxoja's projects and skills in web development." },
-        { property: 'og:image', content: '/images/demo-share.png' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:locale', content: 'en_US' },
-        { property: 'og:url', content: 'https://muhammadxoja.netlify.app/' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Muhammadxoja | Portfolio' },
-        { name: 'twitter:description', content: "Explore Muhammadxoja's projects and skills in web development." },
-        { name: 'twitter:image', content: '/images/demo-share.png' },
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'A awesome developer portfolio design.' },
+        { hid: 'og:title', property: 'og:title', content: siteTitle },
+        { hid: 'og:description', property: 'og:description', content: 'A awesome developer portfolio design.' },
+        { hid: 'og:image', property: 'og:image', content: 'demo-share.jpg' },
+        { hid: 'og:url', property: 'og:url', content: 'https://developer-portfolio-v1.netlify.app/' },
+        { name: 'theme-color', content: '#010C15' },
+        // ...
       ],
       link: [
         { rel: 'manifest', href: 'pwa/manifest.json' },
@@ -32,6 +43,10 @@ export default defineNuxtConfig({
     },
   },
 
+  /**
+   * * Nuxt 3 Modules
+   * Official modules: https://nuxt.com/modules
+   */
   modules: [
     '@nuxtjs/tailwindcss',
   ],
@@ -41,25 +56,31 @@ export default defineNuxtConfig({
       '~/components',
     ],
   },
-
+  
+  /**
+   * * Tailwind CSS Config
+   * Options: https://tailwindcss.nuxt.dev/getting-started/options/
+   * Docs: https://tailwindcss.nuxt.dev
+   */
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',  // Tailwind CSS fayl yo'li
-    configPath: 'tailwind.config.js',      // Tailwind konfiguratsiyasi yo'li
-    exposeConfig: true,
+    cssPath: '~/assets/tailwind.css',
+    configPath: 'tailwind.config',
+    exposeConfig: true, // true to resolve the tailwind config in runtime. https://tailwindcss.nuxt.dev/getting-started/options/#exposeconfig
     injectPosition: 0,
-    viewer: false,  // Tailwind CSS Viewer-ni o'chirish
+    viewer: false,
   },
 
+  /**
+   * * Runtime Config (Environment Variables)
+   * Usage: https://nuxt.com/docs/guide/going-further/runtime-config
+   */
   runtimeConfig: {
-    apiSecret: process.env.API_SECRET, // Maxfiy API kalitini o'qish
+    // The private keys which are only available server-side
+    apiSecret: '123',
+    // Keys within public are also exposed client-side
     public: {
-      apiBase: '/api', 
-    },
-  },
+      apiBase: '/api',
 
-  // Custom Environment Variables (Example)
-  privateConfig: {
-    siteName: process.env.SITE_NAME || 'Default Site Name',
-    siteRole: process.env.SITE_ROLE || 'Developer',
-  },
+    }
+  }
 })

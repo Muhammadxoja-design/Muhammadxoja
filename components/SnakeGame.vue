@@ -256,6 +256,7 @@
             cell.style.flexShrink = 0;
             cell.classList.add("black");
 
+            /* 先渲染蛇身 */
             let snakeCell = this.snake.find(
                 snakeCell => snakeCell.x === j && snakeCell.y === i
             );
@@ -265,6 +266,7 @@
               cell.style.opacity = 1 - (this.snake.indexOf(snakeCell) / this.snake.length);
               cell.classList.add("green");
 
+              /* 蛇頭的特殊樣式 */
               if (this.snake.indexOf(snakeCell) === 0) {
                 let headRadius = "5px";
                 if (this.direction === "up") {
@@ -286,6 +288,7 @@
               }
             }
 
+            /* 最後渲染食物，確保食物始終可見 */
             if (j === this.food.x && i === this.food.y && !snakeCell) {
               cell.style.backgroundColor = "#43D9AD";
               cell.style.borderRadius = "50%";
