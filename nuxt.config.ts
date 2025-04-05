@@ -1,17 +1,15 @@
-const config = require('./developer.json')
-const siteTitle = `${config.name} | ${config.role}`
-
+import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-02-28',
   devtools: { enabled: true },
-  
+
   app: {
     head: {
       htmlAttrs: {
-        lang: 'en', 
+        lang: 'en',
       },
-      title: siteTitle, 
+      title: `${process.env.SITE_NAME} | ${process.env.SITE_ROLE}`, // Dynamic config from .env
       meta: [
         { name: 'description', content: "Muhammadxoja's portfolio showcasing projects, skills, and contact information. Built with Nuxt.js and Tailwind CSS." },
         { name: 'keywords', content: 'Muhammadxoja, portfolio, web developer, frontend, backend, Nuxt.js, Tailwind CSS, projects, parallax, animations' },
@@ -20,7 +18,12 @@ export default defineNuxtConfig({
         { property: 'og:description', content: "Explore Muhammadxoja's projects and skills in web development." },
         { property: 'og:image', content: '/images/demo-share.png' },
         { property: 'og:type', content: 'website' },
-        // ...
+        { property: 'og:locale', content: 'en_US' },
+        { property: 'og:url', content: 'https://muhammadxoja.netlify.app/' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Muhammadxoja | Portfolio' },
+        { name: 'twitter:description', content: "Explore Muhammadxoja's projects and skills in web development." },
+        { name: 'twitter:image', content: '/images/demo-share.png' },
       ],
       link: [
         { rel: 'manifest', href: 'pwa/manifest.json' },
@@ -40,18 +43,23 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: '~/assets/tailwind.css',
-    configPath: 'tailwind.config',
+    cssPath: '~/assets/css/tailwind.css',  // Tailwind CSS fayl yo'li
+    configPath: 'tailwind.config.js',      // Tailwind konfiguratsiyasi yo'li
     exposeConfig: true,
     injectPosition: 0,
-    viewer: false,
+    viewer: false,  // Tailwind CSS Viewer-ni o'chirish
   },
 
   runtimeConfig: {
-    apiSecret: '123',
+    apiSecret: process.env.API_SECRET, // Maxfiy API kalitini o'qish
     public: {
-      apiBase: '/api',
+      apiBase: '/api', 
+    },
+  },
 
-    }
-  }
+  // Custom Environment Variables (Example)
+  privateConfig: {
+    siteName: process.env.SITE_NAME || 'Default Site Name',
+    siteRole: process.env.SITE_ROLE || 'Developer',
+  },
 })
