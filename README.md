@@ -1,5 +1,5 @@
 <h1 align="center">
-  developer-portfolio-v2
+  Muhammadxo'ja
 </h1>
 <p align="center">
   The first open source version of <a href="https://www.figma.com/community/file/1100794861710979147" target="_blank"> Portfolio for Developers Concept V.2</a>, developed by <a href="https://github.com/Muhammadxoja-design">@Muhammadxoja</a>. Built with <a href="https://nuxt.com/" target="_blank">Nuxt.js 3.0</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>.
