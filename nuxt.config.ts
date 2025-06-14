@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxthub/core'],
+  modules: ['@nuxtjs/tailwindcss'],
 
   components: {
     dirs: [
