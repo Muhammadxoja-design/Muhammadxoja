@@ -27,4 +27,5 @@ jobs:
       - name: Build & Deploy to NuxtHub
         uses: nuxt-hub/action@v2
         with:
-          project-key: kimyonazarov-sm31
+          project-key: muhammadxoja-3b9m
+          
