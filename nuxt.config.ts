@@ -5,7 +5,7 @@ const siteTitle = `${config.name} | ${config.role}`
 export default defineNuxtConfig({
  hub: {
     project: 'muhammadxoja-3b9m' 
-  }
+  },
   compatibilityDate: '2025-02-28',
   devtools: { enabled: true },
   app: {
