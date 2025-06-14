@@ -24,8 +24,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build Nuxt project
+        run: yarn build
+
       - name: Build & Deploy to NuxtHub
         uses: nuxt-hub/action@v2
         with:
           project-key: muhammadxoja-3b9m
-          
+          directory: .output/public  # <- MUHIM!
