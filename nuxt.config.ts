@@ -6,81 +6,34 @@ const siteTitle = `${config.name} | ${config.role}`
  * Nuxt 3 Config File
  Usage: https://nuxt.com/docs/api/configuration/nuxt-config
  */
+// nuxt.config.ts
 export default defineNuxtConfig({
-  compatibilityDate: '2025-02-28',
-  devtools: { enabled: true },
-  /**
-   * * App Config
-   * app config: https://nuxt.com/docs/api/configuration/nuxt-config#app
-   * head config: https://nuxt.com/docs/api/configuration/nuxt-config#head
-   * meta config: https://nuxt.com/docs/getting-started/seo-meta
-   * pageTransition config: https://nuxt.com/docs/getting-started/transitions#transitions
-   * TODO: Add more meta tags for SEO
-   * TODO: Add tags for social media sharing
-   * TODO: Migrate apple-touch-icon config to manifest.json
-   */
   app: {
     head: {
-      htmlAttrs: {
-        lang: 'en', // App language
-      },
-      title: siteTitle, // App window nav title
+      title: 'Muhammadxoja | Frontend Developer',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'A awesome developer portfolio design.' },
-        { hid: 'og:title', property: 'og:title', content: siteTitle },
-        { hid: 'og:description', property: 'og:description', content: 'A awesome developer portfolio design.' },
-        { hid: 'og:image', property: 'og:image', content: 'demo-share.jpg' },
-        { hid: 'og:url', property: 'og:url', content: 'https://developer-portfolio-v1.netlify.app/' },
-        { name: 'theme-color', content: '#010C15' },
-        // ...
+        { name: 'description', content: 'Muhammadxoja Kimyonazarov - Frontend, PHP, va Creative Web Developer.' },
+        { name: 'keywords', content: 'Muhammadxoja, Kimyonazarov, Frontend Developer, Portfolio, Uzbekistan, Web Developer' },
+        { name: 'author', content: 'Muhammadxoja Kimyonazarov' },
+        { name: 'robots', content: 'index, follow' },
+        { property: 'og:title', content: 'Muhammadxoja | Frontend Developer' },
+        { property: 'og:description', content: 'Creative web developer portfolio by Muhammadxoja Kimyonazarov.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://muhammadxoja.netlify.app' },
+        { property: 'og:image', content: '/favicon.ico' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Muhammadxoja | Frontend Developer' },
+        { name: 'twitter:description', content: 'Creative web developer portfolio by Muhammadxoja Kimyonazarov.' },
+        { name: 'twitter:image', content: '/favicon.ico' }
       ],
-      link: [
-        { rel: 'manifest', href: 'pwa/manifest.json' },
-        { rel: 'apple-touch-icon', href: 'pwa/icons/apple-touch-icon.png' },
-      ],
-    },
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
   },
-
-  /**
-   * * Nuxt 3 Modules
-   * Official modules: https://nuxt.com/modules
-   */
   modules: [
     '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    '@nuxt/icon',
+    '@nuxt/fonts'
   ],
-
-  components: {
-    dirs: [
-      '~/components',
-    ],
-  },
-  
-  /**
-   * * Tailwind CSS Config
-   * Options: https://tailwindcss.nuxt.dev/getting-started/options/
-   * Docs: https://tailwindcss.nuxt.dev
-   */
-  tailwindcss: {
-    cssPath: '~/assets/tailwind.css',
-    configPath: 'tailwind.config',
-    exposeConfig: true, // true to resolve the tailwind config in runtime. https://tailwindcss.nuxt.dev/getting-started/options/#exposeconfig
-    injectPosition: 0,
-    viewer: false,
-  },
-
-  /**
-   * * Runtime Config (Environment Variables)
-   * Usage: https://nuxt.com/docs/guide/going-further/runtime-config
-   */
-  runtimeConfig: {
-    // The private keys which are only available server-side
-    apiSecret: '123',
-    // Keys within public are also exposed client-side
-    public: {
-      apiBase: '/api',
-
-    }
-  }
+  css: ['@/assets/css/tailwind.css']
 })
