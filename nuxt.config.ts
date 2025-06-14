@@ -2,35 +2,56 @@ const config = require('./developer.json')
 const siteTitle = `${config.name} | ${config.role}`
 
 
-/*
- * Nuxt 3 Config File
- Usage: https://nuxt.com/docs/api/configuration/nuxt-config
- */
-// nuxt.config.ts
 export default defineNuxtConfig({
+ hub: {
+    project: 'muhammadxoja-3b9m' 
+  }
+  compatibilityDate: '2025-02-28',
+  devtools: { enabled: true },
   app: {
     head: {
-      title: 'Muhammadxoja | Frontend Developer',
+      htmlAttrs: {
+        lang: 'en', // App language
+      },
+      title: siteTitle, // App window nav title
       meta: [
-        { name: 'description', content: 'Muhammadxoja Kimyonazarov - Frontend, PHP, va Creative Web Developer.' },
-        { name: 'keywords', content: 'Muhammadxoja, Kimyonazarov, Frontend Developer, Portfolio, Uzbekistan, Web Developer' },
-        { name: 'author', content: 'Muhammadxoja Kimyonazarov' },
-        { name: 'robots', content: 'index, follow' },
-        { property: 'og:title', content: 'Muhammadxoja | Frontend Developer' },
-        { property: 'og:description', content: 'Creative web developer portfolio by Muhammadxoja Kimyonazarov.' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://muhammadxoja.netlify.app' },
-        { property: 'og:image', content: '/favicon.ico' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Muhammadxoja | Frontend Developer' },
-        { name: 'twitter:description', content: 'Creative web developer portfolio by Muhammadxoja Kimyonazarov.' },
-        { name: 'twitter:image', content: '/favicon.ico' }
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'A awesome developer portfolio design.' },
+        { hid: 'og:title', property: 'og:title', content: siteTitle },
+        { hid: 'og:description', property: 'og:description', content: 'A awesome developer portfolio design.' },
+        { hid: 'og:image', property: 'og:image', content: 'demo-share.jpg' },
+        { hid: 'og:url', property: 'og:url', content: 'https://developer-portfolio-v1.netlify.app/' },
+        { name: 'theme-color', content: '#010C15' },
+        // ...
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-    }
+      link: [
+        { rel: 'manifest', href: 'pwa/manifest.json' },
+        { rel: 'apple-touch-icon', href: 'pwa/icons/apple-touch-icon.png' },
+      ],
+    },
   },
-  modules: [
-    '@nuxtjs/tailwindcss',
-  ],
-  css: ['@/assets/tailwind.css']
+
+  modules: ['@nuxtjs/tailwindcss', '@nuxthub/core'],
+
+  components: {
+    dirs: [
+      '~/components',
+    ],
+  },
+  
+  tailwindcss: {
+    cssPath: '~/assets/tailwind.css',
+    configPath: 'tailwind.config',
+    exposeConfig: true, 
+    viewer: false,
+  },
+
+  runtimeConfig: {
+    apiSecret: '123',
+    public: {
+      apiBase: '/api',
+
+    }
+  }
 })
