@@ -31,9 +31,6 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    '@nuxt/icon',
-    '@nuxt/fonts'
   ],
   css: ['@/assets/css/tailwind.css']
 })
