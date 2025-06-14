@@ -11,9 +11,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    defaults:
-      run:
-        working-directory: muhammadxoja
 
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'  # yarn uchun cache
+          cache: 'yarn'
 
       - name: Install dependencies with yarn
         run: yarn install
@@ -38,4 +35,4 @@ jobs:
         id: deploy
         with:
           project-key: muhammadxoja-f6lx
-          directory: muhammadxoja/dist
+          directory: dist
