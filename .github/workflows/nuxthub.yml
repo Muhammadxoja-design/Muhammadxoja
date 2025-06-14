@@ -31,4 +31,3 @@ jobs:
         uses: nuxt-hub/action@v2
         with:
           project-key: muhammadxoja-3b9m
-          directory: ../../public  
