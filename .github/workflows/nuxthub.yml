@@ -28,4 +28,3 @@ jobs:
         uses: nuxt-hub/action@v2
         with:
           project-key: kimyonazarov-sm31
-          
